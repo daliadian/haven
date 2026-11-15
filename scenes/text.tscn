@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://ci7iv8nkong7m"]
+
+[ext_resource type="Script" uid="uid://bdgqvkfqijdeg" path="res://scenes/animated_text.gd" id="1_wwb76"]
+
+[sub_resource type="Animation" id="Animation_tefeu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Text/Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_o6xl0"]
+resource_name = "show"
+length = 3.3000000000000003
+step = 0.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Text/Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0009999999, 2.97),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tipki"]
+_data = {
+&"RESET": SubResource("Animation_tefeu"),
+&"show": SubResource("Animation_o6xl0")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mqy3o"]
+size = Vector2(571, 25)
+
+[node name="Text" type="Node" unique_id=1164327432]
+script = ExtResource("1_wwb76")
+
+[node name="Label" type="Label" parent="." unique_id=489577297]
+offset_left = 410.0
+offset_top = 110.0
+offset_right = 804.0
+offset_bottom = 142.0
+theme_override_font_sizes/font_size = 23
+text = "text text text text text text text text"
+max_lines_visible = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2139151863]
+libraries/ = SubResource("AnimationLibrary_tipki")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1579863748]
+position = Vector2(125, 113)
+scale = Vector2(0.7999998, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1316486049]
+position = Vector2(598.5, 132)
+shape = SubResource("RectangleShape2D_mqy3o")

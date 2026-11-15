@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://ba23ixl1q1wdm"]
+
+[ext_resource type="Shader" uid="uid://cxi5mj6ply4o2" path="res://scroll.gdshader" id="1_r3g3c"]
+[ext_resource type="Script" uid="uid://thkyikba172" path="res://scenes/mainmenu.gd" id="1_s5g8n"]
+[ext_resource type="Texture2D" uid="uid://b1voajoyt4hkp" path="res://images/BG_mainmenu.png" id="3_dfy5j"]
+[ext_resource type="FontFile" uid="uid://4242j3dt01tn" path="res://fonts/TikiTropicBold-5zZZ.ttf" id="4_3vvtq"]
+[ext_resource type="Texture2D" uid="uid://dtgg60prxafhk" path="res://images/rockbottom.png" id="4_s5g8n"]
+[ext_resource type="Texture2D" uid="uid://dx8q4p3wo2p0r" path="res://images/falllll.png" id="5_7yvfd"]
+[ext_resource type="Texture2D" uid="uid://w8thk7eu874v" path="res://images/exit_purple.png" id="7_dfy5j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mqy3o"]
+shader = ExtResource("1_r3g3c")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cxbd2"]
+bg_color = Color(0.60784316, 0.54901963, 0.84313726, 0.3764706)
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1hyk"]
+bg_color = Color(1, 1, 1, 0.16470589)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3bxo"]
+bg_color = Color(0.99607843, 1, 1, 0.18039216)
+
+[node name="MainMenu" type="Node2D" unique_id=1026356471]
+script = ExtResource("1_s5g8n")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=960329926]
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer" unique_id=1495767372]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_mqy3o")
+offset_left = 1190.0
+offset_top = -704.00006
+offset_right = 2365.1912
+offset_bottom = 9296.0
+scale = Vector2(-1.0517931, 1.0654655)
+texture = ExtResource("3_dfy5j")
+
+[node name="Title" type="TextureRect" parent="CanvasLayer" unique_id=313917689]
+offset_left = 39.0
+offset_top = 36.0
+offset_right = 366.0
+offset_bottom = 325.0
+scale = Vector2(2.4924204, 2.0025692)
+texture = ExtResource("4_s5g8n")
+
+[node name="PlayButton" type="Button" parent="CanvasLayer" unique_id=2026827493]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 202.0
+offset_top = 94.00001
+offset_right = 529.0
+offset_bottom = 383.0
+grow_horizontal = 2
+scale = Vector2(1.2141448, 0.8643838)
+theme_override_styles/normal = SubResource("StyleBoxFlat_cxbd2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h1hyk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h1hyk")
+icon = ExtResource("5_7yvfd")
+
+[node name="QuitButton" type="Button" parent="CanvasLayer" unique_id=1750339793]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 228.00006
+offset_top = 348.0
+offset_right = 555.0
+offset_bottom = 637.0
+grow_horizontal = 2
+scale = Vector2(1.1319969, 0.8879943)
+theme_override_fonts/font = ExtResource("4_3vvtq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_cxbd2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h1hyk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_u3bxo")
+icon = ExtResource("7_dfy5j")
+
+[connection signal="pressed" from="CanvasLayer/PlayButton" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/QuitButton" to="." method="_on_quit_pressed"]
